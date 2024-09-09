@@ -42,4 +42,37 @@ headers = {
 response = requests.get(url, headers=headers)
 timeLine = response.json()
 
-print(timeLine.keys())
+timeLine_info = timeLine['info']
+# print(timeLine_info.keys())
+# print(timeLine_info['endOfGameResult'])
+# print(timeLine_info['frameInterval'])
+# print(type(timeLine_info['frames']))
+# print(len(timeLine_info['frames']))
+
+# for i in range(len(timeLine_info['frames'])):
+    # print(type(timeLine_info['frames'][i]))
+    # print(timeLine_info['frames'][i].keys())
+timeLine_info_frames = timeLine_info['frames']
+
+# for i in range(len(timeLine_info_frames[2]['events'])):
+#     print(timeLine_info_frames[2]['events'][i])
+
+
+ward_placed_data = []
+for i in range(len(timeLine_info_frames)):
+    for j in range(len(timeLine_info_frames[i]['events'])):
+        if timeLine_info_frames[i]['events'][j].get('type')=='WARD_PLACED':
+            print(timeLine_info_frames[i]['events'][j])
+
+
+
+
+
+
+
+
+# for i in range(len(timeLine_info_frames[1]['events'])):
+#     print(timeLine_info_frames[1]['events'][i])
+
+# for i in range(len(timeLine_info_frames[1]['events'])):
+#     print(timeLine_info_frames[1]['events'][i])
